@@ -1,30 +1,32 @@
 package com.example.dell.booklibrary.DB;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
-import android.arch.persistence.db.SupportSQLiteOpenHelper.Callback;
-import android.arch.persistence.db.SupportSQLiteOpenHelper.Configuration;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
-import android.arch.persistence.room.RoomOpenHelper;
-import android.arch.persistence.room.RoomOpenHelper.Delegate;
-import android.arch.persistence.room.util.TableInfo;
-import android.arch.persistence.room.util.TableInfo.Column;
-import android.arch.persistence.room.util.TableInfo.ForeignKey;
-import android.arch.persistence.room.util.TableInfo.Index;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.room.RoomOpenHelper;
+import androidx.room.RoomOpenHelper.Delegate;
+import androidx.room.RoomOpenHelper.ValidationResult;
+import androidx.room.util.DBUtil;
+import androidx.room.util.TableInfo;
+import androidx.room.util.TableInfo.Column;
+import androidx.room.util.TableInfo.ForeignKey;
+import androidx.room.util.TableInfo.Index;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
+import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
 import com.example.dell.booklibrary.DAO.BookDAO;
 import com.example.dell.booklibrary.DAO.BookDAO_Impl;
 import com.example.dell.booklibrary.DAO.UserDAO;
 import com.example.dell.booklibrary.DAO.UserDAO_Impl;
-import java.lang.IllegalStateException;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
-@SuppressWarnings("unchecked")
-public class InitializeDatabase_Impl extends InitializeDatabase {
+@SuppressWarnings({"unchecked", "deprecation"})
+public final class InitializeDatabase_Impl extends InitializeDatabase {
   private volatile BookDAO _bookDAO;
 
   private volatile UserDAO _userDAO;
@@ -34,16 +36,21 @@ public class InitializeDatabase_Impl extends InitializeDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `book` (`bookName` TEXT NOT NULL, `authorName` TEXT, `price` TEXT, `releaseDate` TEXT, `category` TEXT, `summary` TEXT, `photoPath` TEXT, `isRead` TEXT, PRIMARY KEY(`bookName`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `book` (`bookName` TEXT NOT NULL, `authorName` TEXT, `price` TEXT, `releaseDate` TEXT, `category` TEXT, `summary` TEXT, `photoPath` TEXT, PRIMARY KEY(`bookName`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `user` (`userName` TEXT NOT NULL, `password` TEXT, `email` TEXT, `phoneNo` TEXT, `address` TEXT, `photoPath` TEXT, PRIMARY KEY(`userName`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b9b08b2b8c4bee3fd99835dc49c2c311\")");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57f4c63cd3df01e037e2f0d8a0704fce')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `book`");
         _db.execSQL("DROP TABLE IF EXISTS `user`");
+        if (mCallbacks != null) {
+          for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
+            mCallbacks.get(_i).onDestructiveMigration(_db);
+          }
+        }
       }
 
       @Override
@@ -67,43 +74,52 @@ public class InitializeDatabase_Impl extends InitializeDatabase {
       }
 
       @Override
-      protected void validateMigration(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsBook = new HashMap<String, TableInfo.Column>(8);
-        _columnsBook.put("bookName", new TableInfo.Column("bookName", "TEXT", true, 1));
-        _columnsBook.put("authorName", new TableInfo.Column("authorName", "TEXT", false, 0));
-        _columnsBook.put("price", new TableInfo.Column("price", "TEXT", false, 0));
-        _columnsBook.put("releaseDate", new TableInfo.Column("releaseDate", "TEXT", false, 0));
-        _columnsBook.put("category", new TableInfo.Column("category", "TEXT", false, 0));
-        _columnsBook.put("summary", new TableInfo.Column("summary", "TEXT", false, 0));
-        _columnsBook.put("photoPath", new TableInfo.Column("photoPath", "TEXT", false, 0));
-        _columnsBook.put("isRead", new TableInfo.Column("isRead", "TEXT", false, 0));
+      public void onPreMigrate(SupportSQLiteDatabase _db) {
+        DBUtil.dropFtsSyncTriggers(_db);
+      }
+
+      @Override
+      public void onPostMigrate(SupportSQLiteDatabase _db) {
+      }
+
+      @Override
+      protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
+        final HashMap<String, TableInfo.Column> _columnsBook = new HashMap<String, TableInfo.Column>(7);
+        _columnsBook.put("bookName", new TableInfo.Column("bookName", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("authorName", new TableInfo.Column("authorName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("price", new TableInfo.Column("price", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("releaseDate", new TableInfo.Column("releaseDate", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("summary", new TableInfo.Column("summary", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("photoPath", new TableInfo.Column("photoPath", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysBook = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesBook = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoBook = new TableInfo("book", _columnsBook, _foreignKeysBook, _indicesBook);
         final TableInfo _existingBook = TableInfo.read(_db, "book");
         if (! _infoBook.equals(_existingBook)) {
-          throw new IllegalStateException("Migration didn't properly handle book(com.example.dell.booklibrary.model.Book).\n"
+          return new RoomOpenHelper.ValidationResult(false, "book(com.example.dell.booklibrary.model.Book).\n"
                   + " Expected:\n" + _infoBook + "\n"
                   + " Found:\n" + _existingBook);
         }
         final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(6);
-        _columnsUser.put("userName", new TableInfo.Column("userName", "TEXT", true, 1));
-        _columnsUser.put("password", new TableInfo.Column("password", "TEXT", false, 0));
-        _columnsUser.put("email", new TableInfo.Column("email", "TEXT", false, 0));
-        _columnsUser.put("phoneNo", new TableInfo.Column("phoneNo", "TEXT", false, 0));
-        _columnsUser.put("address", new TableInfo.Column("address", "TEXT", false, 0));
-        _columnsUser.put("photoPath", new TableInfo.Column("photoPath", "TEXT", false, 0));
+        _columnsUser.put("userName", new TableInfo.Column("userName", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("password", new TableInfo.Column("password", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("email", new TableInfo.Column("email", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("phoneNo", new TableInfo.Column("phoneNo", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("address", new TableInfo.Column("address", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("photoPath", new TableInfo.Column("photoPath", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUser = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesUser = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoUser = new TableInfo("user", _columnsUser, _foreignKeysUser, _indicesUser);
         final TableInfo _existingUser = TableInfo.read(_db, "user");
         if (! _infoUser.equals(_existingUser)) {
-          throw new IllegalStateException("Migration didn't properly handle user(com.example.dell.booklibrary.model.User).\n"
+          return new RoomOpenHelper.ValidationResult(false, "user(com.example.dell.booklibrary.model.User).\n"
                   + " Expected:\n" + _infoUser + "\n"
                   + " Found:\n" + _existingUser);
         }
+        return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "b9b08b2b8c4bee3fd99835dc49c2c311", "e83f9e862de6b76d181bec6e3b315b72");
+    }, "57f4c63cd3df01e037e2f0d8a0704fce", "4e16185a099190088ff96c954ec2aa16");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -114,7 +130,9 @@ public class InitializeDatabase_Impl extends InitializeDatabase {
 
   @Override
   protected InvalidationTracker createInvalidationTracker() {
-    return new InvalidationTracker(this, "book","user");
+    final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
+    HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "book","user");
   }
 
   @Override

@@ -1,12 +1,11 @@
 package com.example.dell.booklibrary.DAO;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
-import com.example.dell.booklibrary.model.Book;
 import com.example.dell.booklibrary.model.User;
 
 import java.util.List;
@@ -18,8 +17,8 @@ public interface UserDAO {
     @Query("SELECT * FROM User where userName=:userName")
     User getUserByName(String userName);
 
-    @Query("SELECT userName FROM User where userName=:userName and password=:password")
-    String getUser(String userName,String password);
+    @Query("SELECT * FROM User where userName=:userName and password=:password")
+    User getUser(String userName,String password);
 
 
     @Query("SELECT userName FROM User")
@@ -27,7 +26,10 @@ public interface UserDAO {
 
     @Query("SELECT email FROM User")
     List<String> getemail();
-    
+
+    @Query("SELECT password FROM User")
+    String getPassword();
+
     @Query("SELECT phoneNo FROM User")
     List<String> getPhoneNo();
     
@@ -35,12 +37,14 @@ public interface UserDAO {
     List<String> getAddress();
     @Query("SELECT photoPath FROM User")
     List<String> getPhotoPath();
+    @Query("Select count(userName) from User")
+    int  getNamecount();
 
 
 
 
     @Insert
-    int insert(User user);
+    void insert(User user);
 
     @Query("Update User set email=:userEmail,phoneNo=:PhoneNo,address=:address,photoPath=:photoPath where userName=:userName")
     void updateUserName(String userName,String userEmail,String PhoneNo,String address,String photoPath);

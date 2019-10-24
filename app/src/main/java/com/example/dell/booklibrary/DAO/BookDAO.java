@@ -1,10 +1,10 @@
 package com.example.dell.booklibrary.DAO;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.dell.booklibrary.model.Book;
 
@@ -16,8 +16,8 @@ public interface BookDAO {
     @Query("SELECT * FROM Book")
     List<Book> getAllBook();
 
-    @Query("SELECT * FROM Book Where isRead='true'")
-    List<Book> getAllReadBook();
+//    @Query("SELECT * FROM Book Where isRead='true'")
+//    List<Book> getAllReadBook();
 
 
 
@@ -27,8 +27,8 @@ public interface BookDAO {
     @Query("SELECT bookName FROM Book")
     List<String> getBookName();
 
-    @Query("select isRead from Book where bookName=:bookName ")
-    String getIsReadbyBookName(String bookName);
+//    @Query("select isRead from Book where bookName=:bookName ")
+//    String getIsReadbyBookName(String bookName);
 
     @Query("select photoPath from Book where bookName=:bookName ")
     String getphotoPathbyBookName(String bookName);
@@ -54,8 +54,11 @@ public interface BookDAO {
     @Update
     void update(Book book);
 
-    @Query("Update Book set isRead=:isRead where bookName=:bookName")
-    void updateIsRead(String isRead,String bookName);
+    @Query("Update Book set authorName=:authorName,price=:price,releaseDate=:releaseDate,category=:category,summary=:summary,photoPath=:photoPath where bookName=:bookName")
+    void updateBookByName(String bookName,String authorName,String price,String releaseDate,String category,String summary,String photoPath);
+
+//    @Query("Update Book set isRead=:isRead where bookName=:bookName")
+//    void updateIsRead(String isRead,String bookName);
 
 
 }

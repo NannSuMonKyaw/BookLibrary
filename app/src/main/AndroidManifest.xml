@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dell.booklibrary">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,15 +11,11 @@
         android:roundIcon="@drawable/logo_1squtor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" >
-
-        </activity>
+        <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".activity.DetailActivity" android:parentActivityName=".activity.MainActivity"
-            />
-        <activity android:name=".activity.LoginActivity" >
-
-        </activity>
+            android:name=".activity.DetailActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.IntroSliderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.UpdateProfileActivity" />
-        <activity android:name=".activity.RegisterActivity"  ></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.BookAddActivity" />
+        <activity android:name=".activity.BookEditActivity"></activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 </manifest>

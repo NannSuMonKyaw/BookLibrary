@@ -1,7 +1,7 @@
 package com.example.dell.booklibrary.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dell.booklibrary.DB.InitializeDatabase;
-import com.example.dell.booklibrary.R;
+
 import com.example.dell.booklibrary.fragments.AccountFragment;
 import com.example.dell.booklibrary.model.User;
-
+import com.example.dell.booklibrary.R;
 public class UpdateProfileActivity extends AppCompatActivity {
 String passedUserName;
 TextView  etuUserName;
@@ -26,11 +26,12 @@ Button btnOk;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        etuUserName=(TextView)findViewById(R.id.rguserName);
-        etEmail=(EditText)findViewById(R.id.rgemail);
-        etPhoneNo=(EditText)findViewById(R.id.rgphoneNo);
-        etAddress=(EditText)findViewById(R.id.rgaddress);
-        btnOk=(Button)findViewById(R.id.btnRegister);
+        etuUserName=(TextView)findViewById(R.id.uduserName);
+        etEmail=(EditText)findViewById(R.id.udemail);
+        etPhoneNo=(EditText)findViewById(R.id.udphoneNo);
+        etAddress=(EditText)findViewById(R.id.udaddress);
+        btnOk=(Button)findViewById(R.id.btnudOk);
+        imvUserProfile=(ImageView)findViewById(R.id.udUserProfile);
         passedUserName=getIntent().getExtras().getString("UserName");
         final InitializeDatabase dbHelper = InitializeDatabase.getInstance(this);
         user=dbHelper.getUserDAO().getUserByName(passedUserName);
@@ -51,8 +52,8 @@ Button btnOk;
             public void onClick(View v) {
                 //updateUser=new User(etuUserName.getText().toString(),etEmail.getText().toString(),etPhoneNo.getText().toString(),etAddress.getText().toString(),null);
                 dbHelper.getUserDAO().updateUserName(passedUserName,etEmail.getText().toString(),etPhoneNo.getText().toString(),etAddress.getText().toString(),null);
-                Intent intent=new Intent( v.getContext(),AccountFragment.class);
-                v.getContext().startActivity(intent);
+//                Intent intent=new Intent( v.getContext(),AccountFragment.class);
+//                v.getContext().startActivity(intent);
                 finish();
 
 

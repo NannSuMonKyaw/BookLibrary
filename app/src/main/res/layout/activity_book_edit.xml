@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.BookEditActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:elevation="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="10dp">
+
+
+                    <ImageView
+                        android:id="@+id/edimbookimage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/album_title_padding"
+                        android:background="@drawable/album1" />
+
+
+                    <TextView
+                        android:id="@+id/lbedbookName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/edimbookimage"
+                        android:layout_marginRight="@dimen/album_title_padding"
+                        android:text="Title  :"
+                        android:padding="3dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <TextView
+                        android:id="@+id/etedbookName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/edimbookimage"
+                        android:layout_alignTop="@+id/lbedbookName"
+                        android:layout_toRightOf="@+id/lbedbookName"
+                        android:text="MC"
+                        android:padding="3dp"
+                        android:layout_alignBottom="@+id/lbedbookName"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <TextView
+                        android:id="@+id/lbedauthorName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedbookName"
+                        android:layout_marginTop="5dp"
+                        android:padding="3dp"
+                        android:text="Author :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <EditText
+                        android:id="@+id/etedauthorName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etedbookName"
+                        android:layout_alignLeft="@+id/etedbookName"
+                        android:layout_alignTop="@+id/lbedauthorName"
+                        android:layout_marginLeft="25dp"
+                        android:layout_toRightOf="@id/lbedauthorName"
+                        android:hint="Local"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <TextView
+                        android:id="@+id/lbedprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedauthorName"
+                        android:layout_marginTop="5dp"
+                        android:padding="3dp"
+                        android:layout_marginRight="@dimen/album_title_padding"
+                        android:text="Price    :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <EditText
+                        android:id="@+id/etedprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etedauthorName"
+                        android:layout_alignLeft="@+id/etedauthorName"
+                        android:layout_alignTop="@+id/lbedprice"
+                        android:layout_toRightOf="@id/lbedprice"
+                        android:hint="3000"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <TextView
+                        android:id="@+id/lbedreleaseDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedprice"
+                        android:layout_marginTop="5dp"
+                        android:padding="3dp"
+                        android:layout_marginRight="@dimen/album_title_padding"
+                        android:text="Release Date :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <EditText
+                        android:id="@+id/etedreleaseDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etedprice"
+                        android:layout_alignTop="@+id/lbedreleaseDate"
+                        android:layout_toRightOf="@id/lbedreleaseDate"
+                        android:hint="22-10-2019"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <TextView
+                        android:id="@+id/lbedCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedreleaseDate"
+                        android:layout_marginTop="5dp"
+                        android:padding="3dp"
+                        android:layout_marginRight="@dimen/album_title_padding"
+                        android:text="Category :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <EditText
+                        android:id="@+id/edcategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etedreleaseDate"
+                        android:layout_alignTop="@+id/lbedCategory"
+                        android:layout_marginLeft="10dp"
+
+                        android:layout_toRightOf="@id/lbedCategory"
+                        android:hint="Thriller"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <TextView
+                        android:id="@+id/lbedSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedCategory"
+                        android:layout_marginRight="@dimen/album_title_padding"
+                        android:padding="3dp"
+                        android:text="Summary :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <EditText
+                        android:id="@+id/etedsummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbedSummary"
+                        android:layout_marginTop="3dp"
+                        android:hint="hello_blank_fragment"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <Button
+                        android:id="@+id/btnedSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/etedsummary"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="3dp"
+
+                        android:text="Save"
+                        android:textSize="18dp" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

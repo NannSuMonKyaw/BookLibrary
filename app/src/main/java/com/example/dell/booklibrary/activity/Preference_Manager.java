@@ -2,8 +2,8 @@ package com.example.dell.booklibrary.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.dell.booklibrary.R;
 
 public class Preference_Manager extends AppCompatActivity {

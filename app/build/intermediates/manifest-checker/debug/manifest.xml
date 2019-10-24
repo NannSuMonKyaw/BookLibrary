@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@drawable/logo_1squtor"
         android:label="@string/app_name"
@@ -20,11 +20,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.dell.booklibrary.activity.MainActivity" >
-        </activity>
-        <activity android:name="com.example.dell.booklibrary.activity.DetailActivity" />
-        <activity android:name="com.example.dell.booklibrary.activity.LoginActivity" >
-        </activity>
+        <activity android:name="com.example.dell.booklibrary.activity.MainActivity" />
+        <activity
+            android:name="com.example.dell.booklibrary.activity.DetailActivity"
+            android:parentActivityName="com.example.dell.booklibrary.activity.MainActivity" />
+        <activity android:name="com.example.dell.booklibrary.activity.LoginActivity" />
         <activity android:name="com.example.dell.booklibrary.activity.IntroSliderActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +34,12 @@
         </activity>
         <activity android:name="com.example.dell.booklibrary.activity.UpdateProfileActivity" />
         <activity android:name="com.example.dell.booklibrary.activity.RegisterActivity" />
+        <activity android:name="com.example.dell.booklibrary.activity.BookAddActivity" />
+        <activity android:name="com.example.dell.booklibrary.activity.BookEditActivity" />
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:exported="false" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"
