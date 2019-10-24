@@ -16,12 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:orientation="vertical">
 
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/Qcard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +39,7 @@
                 android:id="@+id/btnedit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etUserName"
+
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:text="Edit"
@@ -49,7 +48,7 @@
                 android:textSize="18dp" />
 
             <ImageView
-                android:id="@+id/rguserProfileImage"
+                android:id="@+id/userProfile"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_alignParentTop="true"
@@ -57,19 +56,19 @@
                 android:background="@drawable/logo_1squtor"
                 android:layout_marginBottom="10dp" />
             <TextView
-                android:id="@+id/lbrgUserName"
+                android:id="@+id/lbUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rguserProfileImage"
+                android:layout_below="@+id/userProfile"
                 android:layout_marginTop="3dp"
                 android:text="User Name :"
                 android:textSize="@dimen/text_size_small"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/rguserName"
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lbrgUserName"
+                android:layout_below="@+id/lbUserName"
 
                 android:text="Blah Blah"
                 android:textStyle="bold"
@@ -78,18 +77,18 @@
                 android:padding="@dimen/album_title_padding"/>
 
             <TextView
-                android:id="@+id/lburgEmail"
+                android:id="@+id/lbEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rguserName"
+                android:layout_below="@+id/userName"
                 android:text="Email :"
                 android:textSize="@dimen/text_size_small"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/rgemail"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lburgEmail"
+                android:layout_below="@+id/lbEmail"
 
                 android:text="blahblah@gmail.com"
                 android:textStyle="bold"
@@ -97,18 +96,18 @@
                 android:textSize="@dimen/text_size_medium"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/lbrgPhoneNo"
+                android:id="@+id/lbPhoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rgemail"
+                android:layout_below="@+id/email"
                 android:text="Phone No :"
                 android:textSize="@dimen/text_size_small"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/rgphoneNo"
+                android:id="@+id/phoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lbrgPhoneNo"
+                android:layout_below="@+id/lbPhoneNo"
 
                 android:text="09xxxxxxxxx"
                 android:textStyle="bold"
@@ -116,18 +115,18 @@
                 android:textSize="@dimen/text_size_medium"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/lbrgAddress"
+                android:id="@+id/lbAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rgphoneNo"
+                android:layout_below="@+id/phoneNo"
                 android:text="Address :"
                 android:textSize="@dimen/text_size_small"
                 android:padding="@dimen/album_title_padding"/>
             <TextView
-                android:id="@+id/rgaddress"
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lbrgAddress"
+                android:layout_below="@+id/lbAddress"
                 android:text="N0.38,Pyin Oo Lwin"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -137,16 +136,9 @@
 
 
 
-
-
-
-
-
-
-
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
     </LinearLayout>
     </ScrollView>
 </FrameLayout>

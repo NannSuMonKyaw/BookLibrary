@@ -2,12 +2,12 @@ package com.example.dell.booklibrary.activity;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
-
 import com.example.dell.booklibrary.DB.InitializeDatabase;
 import com.example.dell.booklibrary.R;
+
 public class IntroSliderActivity extends AppCompatActivity {
     private Preference_Manager prefManager;
     private static int SPLASH_TIME_OUT=3000;
@@ -47,7 +47,7 @@ public class IntroSliderActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent homeIntent=new Intent(IntroSliderActivity.this,LoginActivity.class);
+                    Intent homeIntent=new Intent(IntroSliderActivity.this,MainActivity.class);
                     startActivity(homeIntent);
                     finish();
                 }

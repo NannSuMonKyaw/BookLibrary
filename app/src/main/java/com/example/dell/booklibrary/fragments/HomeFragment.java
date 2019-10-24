@@ -1,16 +1,19 @@
 package com.example.dell.booklibrary.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dell.booklibrary.DB.InitializeDatabase;
+import com.example.dell.booklibrary.activity.BookAddActivity;
 import com.example.dell.booklibrary.adapter.BookAdapter;
 import com.example.dell.booklibrary.model.Book;
 import com.example.dell.booklibrary.R;
@@ -24,7 +27,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private BookAdapter adapter;
     private List<Book> bookList,bookArray;
-
+    FloatingActionButton fab;
     String bookName,authorName,price,releaseDate,category,summary,photoPath,isRead;
     @Nullable
     @Override
@@ -33,19 +36,28 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        bookList = new ArrayList<>();
-
+        fab=(FloatingActionButton)view.findViewById(R.id.fab);
+        bookList = new ArrayList<Book>();
+       // prepareBooks();
         adapter = new BookAdapter(getContext(), bookList);
         RecyclerView.LayoutManager mLayoutManager =new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        prepareAlbums();
+        prepareBooks();
+
+    fab.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+           Intent intent=new Intent(v.getContext(),BookAddActivity.class);
+            startActivity(intent);
+        }
+    });
 
         return view;
     }
-    private void prepareAlbums() {
+    private void prepareBooks() {
 
 
 
@@ -58,10 +70,12 @@ public class HomeFragment extends Fragment {
 
             authorName=bookArray.get(i).getAuthorName();
             photoPath=bookArray.get(i).getPhotoPath();
-            isRead=bookArray.get(i).getIsRead();
+          //  isRead=bookArray.get(i).getIsRead();
 
-            Book a = new Book(bookName, authorName,price,releaseDate,category,summary,photoPath,isRead);
+          //  Book a = new Book(bookName, authorName,price,releaseDate,category,summary,photoPath,isRead);
+            Book a = new Book(bookName, authorName,price,releaseDate,category,summary,photoPath);
             bookList.add(a);
+
 
         }
 
@@ -70,5 +84,16 @@ public class HomeFragment extends Fragment {
 
 
        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //prepareBooks();
+        InitializeDatabase dbHelper = InitializeDatabase.getInstance(getContext());
+
+        bookArray=(ArrayList<Book>)dbHelper.getBookDAO().getAllBook();
+        adapter = new BookAdapter(getContext(), bookArray);
+        recyclerView.setAdapter(adapter);
     }
 }

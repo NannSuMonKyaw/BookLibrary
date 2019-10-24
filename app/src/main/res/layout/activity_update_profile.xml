@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -15,12 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:orientation="vertical">
 
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,7 +37,7 @@
 
 
                     <ImageView
-                        android:id="@+id/rguserProfileImage"
+                        android:id="@+id/udUserProfile"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_alignParentTop="true"
@@ -46,20 +45,20 @@
                         android:background="@drawable/logo_1squtor"
                         android:layout_marginBottom="10dp" />
                     <TextView
-                        android:id="@+id/lbrgUserName"
+                        android:id="@+id/lbudUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rguserProfileImage"
+                        android:layout_below="@+id/udUserProfile"
                         android:layout_marginTop="3dp"
                         android:textColor="@color/colorPrimary"
                         android:text="User Name :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <TextView
-                        android:id="@+id/rguserName"
+                        android:id="@+id/uduserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lbrgUserName"
+                        android:layout_below="@+id/lbudUserName"
 
                         android:hint="Blah Blah"
                         android:textStyle="bold"
@@ -68,19 +67,19 @@
                         android:padding="@dimen/album_title_padding"/>
 
                     <TextView
-                        android:id="@+id/lburgEmail"
+                        android:id="@+id/lbudEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rguserName"
+                        android:layout_below="@+id/uduserName"
                         android:textColor="@color/colorPrimary"
                         android:text="Email :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
-                        android:id="@+id/rgemail"
+                        android:id="@+id/udemail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lburgEmail"
+                        android:layout_below="@+id/lbudEmail"
 
                         android:hint="blahblah@gmail.com"
                         android:textStyle="bold"
@@ -88,19 +87,19 @@
                         android:textSize="@dimen/text_size_medium"
                         android:padding="@dimen/album_title_padding"/>
                     <TextView
-                        android:id="@+id/lbrgPhoneNo"
+                        android:id="@+id/lbudPhoneNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rgemail"
+                        android:layout_below="@+id/udemail"
                         android:textColor="@color/colorPrimary"
                         android:text="Phone No :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
-                        android:id="@+id/rgphoneNo"
+                        android:id="@+id/udphoneNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lbrgPhoneNo"
+                        android:layout_below="@+id/lbudPhoneNo"
 
                         android:hint="09xxxxxxxxx"
                         android:textStyle="bold"
@@ -108,19 +107,19 @@
                         android:textSize="@dimen/text_size_medium"
                         android:padding="@dimen/album_title_padding"/>
                     <TextView
-                        android:id="@+id/lbrgAddress"
+                        android:id="@+id/lbudAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rgphoneNo"
+                        android:layout_below="@+id/udphoneNo"
                         android:textColor="@color/colorPrimary"
                         android:text="Address :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
-                        android:id="@+id/rgaddress"
+                        android:id="@+id/udaddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lbrgAddress"
+                        android:layout_below="@+id/lbudAddress"
                         android:hint="N0.38,Pyin Oo Lwin"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
@@ -128,10 +127,10 @@
                         android:padding="@dimen/album_title_padding"/>
 
                     <Button
-                        android:id="@+id/btnRegister"
+                        android:id="@+id/btnudOk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                       android:layout_below="@+id/rgaddress"
+                       android:layout_below="@+id/udaddress"
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
                         android:text="OK"
@@ -141,17 +140,10 @@
                         android:textSize="18dp" />
 
 
-
-
-
-
-
-
-
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
