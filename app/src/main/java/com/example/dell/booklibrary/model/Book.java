@@ -1,14 +1,14 @@
 package com.example.dell.booklibrary.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 @Entity(tableName = "book")
 public class Book implements Parcelable {
@@ -44,9 +44,6 @@ public class Book implements Parcelable {
 
 
 
-    @Nullable
-    @ColumnInfo(name = "isRead")
-     private String isRead;
 
 
     protected Book(Parcel in) {
@@ -58,7 +55,7 @@ public class Book implements Parcelable {
         categoary=in.readString();
         summary=in.readString();
         photoPath=in.readString();
-        isRead=in.readString();
+
 
     }
 
@@ -136,15 +133,8 @@ public class Book implements Parcelable {
     }
 
 
-    public String getIsRead() {
-        return isRead;
-    }
 
-    public void setIsRead(String isRead) {
-        this.isRead = isRead;
-    }
-
-    public Book(String bookName, String authorName, @Nullable String price,@Nullable String releaseDate,@Nullable String categoary,@Nullable String summary,@Nullable String photoPath,@Nullable String isRead) {
+    public Book(String bookName, String authorName, @Nullable String price,@Nullable String releaseDate,@Nullable String categoary,@Nullable String summary,@Nullable String photoPath ) {
 
         this.bookName = bookName;
         this.authorName = authorName;
@@ -153,52 +143,33 @@ public class Book implements Parcelable {
         this.categoary = categoary;
         this.summary = summary;
         this.photoPath=photoPath;
-        this.isRead=isRead;
+
 
     }
-
-    public static Book[] populateData() {
-        return new Book[] {
-
-
-               new Book("Martin Luthor King1","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King2","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King3","John","3000","21-10-19","biography","this is blah blah blah","album2","false"),
-                new Book("Martin Luthor King4","John","3000","21-10-19","biography","this is blah blah blah","album3","true"),
-                new Book("Martin Luthor King5","John","3000","21-10-19","biography","this is blah blah blah","album4","true"),
-                new Book("Martin Luthor King6","John","3000","21-10-19","biography","this is blah blah blah","album1","false"),
-                new Book("Martin Luthor King7","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King8","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King9","John","3000","21-10-19","biography","this is blah blah blah","album6","true"),
-                new Book("Martin Luthor King10","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King11","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King12","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King13","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King14","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King15","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-                new Book("Martin Luthor King16","John","3000","21-10-19","biography","this is blah blah blah","album1","true")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        };
-    }
+//
+//    public static Book[] populateData() {
+//        return new Book[] {
+//
+//
+//               new Book("Martin Luthor King1","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King2","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King3","John","3000","21-10-19","biography","this is blah blah blah","album2","false"),
+//                new Book("Martin Luthor King4","John","3000","21-10-19","biography","this is blah blah blah","album3","true"),
+//                new Book("Martin Luthor King5","John","3000","21-10-19","biography","this is blah blah blah","album4","true"),
+//                new Book("Martin Luthor King6","John","3000","21-10-19","biography","this is blah blah blah","album1","false"),
+//                new Book("Martin Luthor King7","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King8","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King9","John","3000","21-10-19","biography","this is blah blah blah","album6","true"),
+//                new Book("Martin Luthor King10","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King11","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King12","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King13","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King14","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King15","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
+//                new Book("Martin Luthor King16","John","3000","21-10-19","biography","this is blah blah blah","album1","true")
+//
+//        };
+//    }
 
 
     @Override
