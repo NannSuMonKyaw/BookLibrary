@@ -60,10 +60,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album2.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album2.png"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_home_black_24dp.xml.flat",
         "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
@@ -78,6 +74,10 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_design_ic_visibility_off.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0.aar\\ecdccedfefa5d30da0c49057e47bc6a8\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_user_24.png.flat",
+        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\user_24.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -180,8 +180,8 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album4.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album4.png"
+        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_about_24.png.flat",
+        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\about_24.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_box_inner_merged_animation.xml.flat",
@@ -246,10 +246,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_btn_stroke_color_selector.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0.aar\\ecdccedfefa5d30da0c49057e47bc6a8\\res\\color\\mtrl_btn_stroke_color_selector.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album6.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album6.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_light.xml.flat",
@@ -432,8 +428,8 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album10.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album10.png"
+        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo.png.flat",
+        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\logo.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -562,10 +558,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album9.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album9.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -734,10 +726,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_cab_background_top_material.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album7.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album7.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility_off.xml.flat",
@@ -936,10 +924,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\color-v23\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album8.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album8.png"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_layout_snackbar_include.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0.aar\\ecdccedfefa5d30da0c49057e47bc6a8\\res\\layout\\mtrl_layout_snackbar_include.xml"
     },
@@ -1032,10 +1016,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\anim\\abc_tooltip_enter.xml"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album3.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album3.png"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-mdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
@@ -1058,10 +1038,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_mode_close_item_material.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album11.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album11.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -1216,10 +1192,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_notifications_black_24dp.xml.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
@@ -1230,10 +1202,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0.aar\\ecdccedfefa5d30da0c49057e47bc6a8\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album1.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album1.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_part_time.xml.flat",
@@ -1368,10 +1336,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_checked_16.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\checked_16.png"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
@@ -1418,10 +1382,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_account.xml.flat",
         "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\layout\\fragment_account.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_album5.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\album5.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
@@ -1748,10 +1708,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_dashboard_black_24dp.xml.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\ic_dashboard_black_24dp.xml"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0.aar\\02e93360021deaf16597f56fd3eda73e\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
@@ -1840,10 +1796,6 @@
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_unchecked_16.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\unchecked_16.png"
-    },
-    {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_chip_text_color.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0.aar\\ecdccedfefa5d30da0c49057e47bc6a8\\res\\color\\mtrl_chip_text_color.xml"
     },
@@ -1866,6 +1818,10 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_plus_240.png.flat",
+        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\plus_240.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -2182,10 +2138,6 @@
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tooltip_frame_light.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.1.0.aar\\9bf0fade4eb54ae6c8267771b3c40dc0\\res\\drawable\\tooltip_frame_light.xml"
-    },
-    {
-        "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_1squtor.png.flat",
-        "source": "D:\\my school data and project\\BookLibrary\\app\\src\\main\\res\\drawable\\logo_1squtor.png"
     },
     {
         "merged": "D:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",

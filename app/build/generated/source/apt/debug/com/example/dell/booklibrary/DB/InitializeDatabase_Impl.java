@@ -36,10 +36,10 @@ public final class InitializeDatabase_Impl extends InitializeDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `book` (`bookName` TEXT NOT NULL, `authorName` TEXT, `price` TEXT, `releaseDate` TEXT, `category` TEXT, `summary` TEXT, `photoPath` TEXT, PRIMARY KEY(`bookName`))");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `user` (`userName` TEXT NOT NULL, `password` TEXT, `email` TEXT, `phoneNo` TEXT, `address` TEXT, `photoPath` TEXT, PRIMARY KEY(`userName`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `book` (`bookId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `bookName` TEXT, `authorName` TEXT, `userId` INTEGER NOT NULL, `price` TEXT, `releaseDate` TEXT, `category` TEXT, `summary` TEXT, `photoPath` TEXT)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `user` (`userId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userName` TEXT, `password` TEXT, `email` TEXT, `phoneNo` TEXT, `address` TEXT, `photoPath` TEXT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57f4c63cd3df01e037e2f0d8a0704fce')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e7e4db2a8dbae3b4c549793a2f2faaa7')");
       }
 
       @Override
@@ -84,9 +84,11 @@ public final class InitializeDatabase_Impl extends InitializeDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsBook = new HashMap<String, TableInfo.Column>(7);
-        _columnsBook.put("bookName", new TableInfo.Column("bookName", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashMap<String, TableInfo.Column> _columnsBook = new HashMap<String, TableInfo.Column>(9);
+        _columnsBook.put("bookId", new TableInfo.Column("bookId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("bookName", new TableInfo.Column("bookName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBook.put("authorName", new TableInfo.Column("authorName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsBook.put("userId", new TableInfo.Column("userId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBook.put("price", new TableInfo.Column("price", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBook.put("releaseDate", new TableInfo.Column("releaseDate", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsBook.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -101,8 +103,9 @@ public final class InitializeDatabase_Impl extends InitializeDatabase {
                   + " Expected:\n" + _infoBook + "\n"
                   + " Found:\n" + _existingBook);
         }
-        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(6);
-        _columnsUser.put("userName", new TableInfo.Column("userName", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(7);
+        _columnsUser.put("userId", new TableInfo.Column("userId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("userName", new TableInfo.Column("userName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("password", new TableInfo.Column("password", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("email", new TableInfo.Column("email", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("phoneNo", new TableInfo.Column("phoneNo", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -119,7 +122,7 @@ public final class InitializeDatabase_Impl extends InitializeDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "57f4c63cd3df01e037e2f0d8a0704fce", "4e16185a099190088ff96c954ec2aa16");
+    }, "e7e4db2a8dbae3b4c549793a2f2faaa7", "609c0840004cb55446493f9552b55b6c");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

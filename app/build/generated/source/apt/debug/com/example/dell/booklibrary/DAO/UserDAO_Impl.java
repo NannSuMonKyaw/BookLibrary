@@ -35,107 +35,101 @@ public final class UserDAO_Impl implements UserDAO {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `user` (`userName`,`password`,`email`,`phoneNo`,`address`,`photoPath`) VALUES (?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `user` (`userId`,`userName`,`password`,`email`,`phoneNo`,`address`,`photoPath`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
+        stmt.bindLong(1, value.getUserId());
         if (value.getUserName() == null) {
-          stmt.bindNull(1);
-        } else {
-          stmt.bindString(1, value.getUserName());
-        }
-        if (value.getPassword() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getPassword());
+          stmt.bindString(2, value.getUserName());
         }
-        if (value.getEmail() == null) {
+        if (value.getPassword() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getEmail());
+          stmt.bindString(3, value.getPassword());
         }
-        if (value.getPhoneNo() == null) {
+        if (value.getEmail() == null) {
           stmt.bindNull(4);
         } else {
-          stmt.bindString(4, value.getPhoneNo());
+          stmt.bindString(4, value.getEmail());
         }
-        if (value.getAddress() == null) {
+        if (value.getPhoneNo() == null) {
           stmt.bindNull(5);
         } else {
-          stmt.bindString(5, value.getAddress());
+          stmt.bindString(5, value.getPhoneNo());
         }
-        if (value.getPhotoPath() == null) {
+        if (value.getAddress() == null) {
           stmt.bindNull(6);
         } else {
-          stmt.bindString(6, value.getPhotoPath());
+          stmt.bindString(6, value.getAddress());
+        }
+        if (value.getPhotoPath() == null) {
+          stmt.bindNull(7);
+        } else {
+          stmt.bindString(7, value.getPhotoPath());
         }
       }
     };
     this.__deletionAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "DELETE FROM `user` WHERE `userName` = ?";
+        return "DELETE FROM `user` WHERE `userId` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
-        if (value.getUserName() == null) {
-          stmt.bindNull(1);
-        } else {
-          stmt.bindString(1, value.getUserName());
-        }
+        stmt.bindLong(1, value.getUserId());
       }
     };
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `user` SET `userName` = ?,`password` = ?,`email` = ?,`phoneNo` = ?,`address` = ?,`photoPath` = ? WHERE `userName` = ?";
+        return "UPDATE OR ABORT `user` SET `userId` = ?,`userName` = ?,`password` = ?,`email` = ?,`phoneNo` = ?,`address` = ?,`photoPath` = ? WHERE `userId` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
+        stmt.bindLong(1, value.getUserId());
         if (value.getUserName() == null) {
-          stmt.bindNull(1);
-        } else {
-          stmt.bindString(1, value.getUserName());
-        }
-        if (value.getPassword() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getPassword());
+          stmt.bindString(2, value.getUserName());
         }
-        if (value.getEmail() == null) {
+        if (value.getPassword() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getEmail());
+          stmt.bindString(3, value.getPassword());
         }
-        if (value.getPhoneNo() == null) {
+        if (value.getEmail() == null) {
           stmt.bindNull(4);
         } else {
-          stmt.bindString(4, value.getPhoneNo());
+          stmt.bindString(4, value.getEmail());
         }
-        if (value.getAddress() == null) {
+        if (value.getPhoneNo() == null) {
           stmt.bindNull(5);
         } else {
-          stmt.bindString(5, value.getAddress());
+          stmt.bindString(5, value.getPhoneNo());
         }
-        if (value.getPhotoPath() == null) {
+        if (value.getAddress() == null) {
           stmt.bindNull(6);
         } else {
-          stmt.bindString(6, value.getPhotoPath());
+          stmt.bindString(6, value.getAddress());
         }
-        if (value.getUserName() == null) {
+        if (value.getPhotoPath() == null) {
           stmt.bindNull(7);
         } else {
-          stmt.bindString(7, value.getUserName());
+          stmt.bindString(7, value.getPhotoPath());
         }
+        stmt.bindLong(8, value.getUserId());
       }
     };
     this.__preparedStmtOfUpdateUserName = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "Update User set email=?,phoneNo=?,address=?,photoPath=? where userName=?";
+        final String _query = "Update User set userName=?,email=?,phoneNo=?,address=?,photoPath=? where userId=?";
         return _query;
       }
     };
@@ -197,40 +191,42 @@ public final class UserDAO_Impl implements UserDAO {
   }
 
   @Override
-  public void updateUserName(final String userName, final String userEmail, final String PhoneNo,
-      final String address, final String photoPath) {
+  public void updateUserName(final int userId, final String userName, final String userEmail,
+      final String PhoneNo, final String address, final String photoPath) {
     __db.assertNotSuspendingTransaction();
     final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateUserName.acquire();
     int _argIndex = 1;
-    if (userEmail == null) {
-      _stmt.bindNull(_argIndex);
-    } else {
-      _stmt.bindString(_argIndex, userEmail);
-    }
-    _argIndex = 2;
-    if (PhoneNo == null) {
-      _stmt.bindNull(_argIndex);
-    } else {
-      _stmt.bindString(_argIndex, PhoneNo);
-    }
-    _argIndex = 3;
-    if (address == null) {
-      _stmt.bindNull(_argIndex);
-    } else {
-      _stmt.bindString(_argIndex, address);
-    }
-    _argIndex = 4;
-    if (photoPath == null) {
-      _stmt.bindNull(_argIndex);
-    } else {
-      _stmt.bindString(_argIndex, photoPath);
-    }
-    _argIndex = 5;
     if (userName == null) {
       _stmt.bindNull(_argIndex);
     } else {
       _stmt.bindString(_argIndex, userName);
     }
+    _argIndex = 2;
+    if (userEmail == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, userEmail);
+    }
+    _argIndex = 3;
+    if (PhoneNo == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, PhoneNo);
+    }
+    _argIndex = 4;
+    if (address == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, address);
+    }
+    _argIndex = 5;
+    if (photoPath == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, photoPath);
+    }
+    _argIndex = 6;
+    _stmt.bindLong(_argIndex, userId);
     __db.beginTransaction();
     try {
       _stmt.executeUpdateDelete();
@@ -268,6 +264,7 @@ public final class UserDAO_Impl implements UserDAO {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
+      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
       final int _cursorIndexOfUserName = CursorUtil.getColumnIndexOrThrow(_cursor, "userName");
       final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
@@ -289,6 +286,9 @@ public final class UserDAO_Impl implements UserDAO {
         final String _tmpPhotoPath;
         _tmpPhotoPath = _cursor.getString(_cursorIndexOfPhotoPath);
         _result = new User(_tmpUserName,_tmpPassword,_tmpEmail,_tmpPhoneNo,_tmpAddress,_tmpPhotoPath);
+        final int _tmpUserId;
+        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
+        _result.setUserId(_tmpUserId);
       } else {
         _result = null;
       }
@@ -312,6 +312,7 @@ public final class UserDAO_Impl implements UserDAO {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
+      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
       final int _cursorIndexOfUserName = CursorUtil.getColumnIndexOrThrow(_cursor, "userName");
       final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
@@ -333,8 +334,87 @@ public final class UserDAO_Impl implements UserDAO {
         final String _tmpPhotoPath;
         _tmpPhotoPath = _cursor.getString(_cursorIndexOfPhotoPath);
         _result = new User(_tmpUserName,_tmpPassword,_tmpEmail,_tmpPhoneNo,_tmpAddress,_tmpPhotoPath);
+        final int _tmpUserId;
+        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
+        _result.setUserId(_tmpUserId);
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public User getUserById(final int userId) {
+    final String _sql = "SELECT * FROM User where userId=?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, userId);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
+      final int _cursorIndexOfUserName = CursorUtil.getColumnIndexOrThrow(_cursor, "userName");
+      final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
+      final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+      final int _cursorIndexOfPhoneNo = CursorUtil.getColumnIndexOrThrow(_cursor, "phoneNo");
+      final int _cursorIndexOfAddress = CursorUtil.getColumnIndexOrThrow(_cursor, "address");
+      final int _cursorIndexOfPhotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "photoPath");
+      final User _result;
+      if(_cursor.moveToFirst()) {
+        final String _tmpUserName;
+        _tmpUserName = _cursor.getString(_cursorIndexOfUserName);
+        final String _tmpPassword;
+        _tmpPassword = _cursor.getString(_cursorIndexOfPassword);
+        final String _tmpEmail;
+        _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
+        final String _tmpPhoneNo;
+        _tmpPhoneNo = _cursor.getString(_cursorIndexOfPhoneNo);
+        final String _tmpAddress;
+        _tmpAddress = _cursor.getString(_cursorIndexOfAddress);
+        final String _tmpPhotoPath;
+        _tmpPhotoPath = _cursor.getString(_cursorIndexOfPhotoPath);
+        _result = new User(_tmpUserName,_tmpPassword,_tmpEmail,_tmpPhoneNo,_tmpAddress,_tmpPhotoPath);
+        final int _tmpUserId;
+        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
+        _result.setUserId(_tmpUserId);
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public int getUserId(final String userName, final String password) {
+    final String _sql = "SELECT userId FROM User where userName=? and password=?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    if (userName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, userName);
+    }
+    _argIndex = 2;
+    if (password == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, password);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if(_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
       }
       return _result;
     } finally {
@@ -362,6 +442,7 @@ public final class UserDAO_Impl implements UserDAO {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
+      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
       final int _cursorIndexOfUserName = CursorUtil.getColumnIndexOrThrow(_cursor, "userName");
       final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
@@ -383,6 +464,9 @@ public final class UserDAO_Impl implements UserDAO {
         final String _tmpPhotoPath;
         _tmpPhotoPath = _cursor.getString(_cursorIndexOfPhotoPath);
         _result = new User(_tmpUserName,_tmpPassword,_tmpEmail,_tmpPhoneNo,_tmpAddress,_tmpPhotoPath);
+        final int _tmpUserId;
+        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
+        _result.setUserId(_tmpUserId);
       } else {
         _result = null;
       }

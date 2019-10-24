@@ -3,49 +3,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_account">Account</string>
-    <string name="title_about">Saved</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Home » Android Toolbar Example: Using Toolbar in Your Application
-Android Toolbar Example: Using Toolbar in Your Application
-November 2, 2017 by Belal Khan 7 Comments
+    <string name="title_about">About</string>
 
 
-
-In this android toolbar example, I will be explaining to you how to use Toolbar in your application. So, if you are confused about using the toolbar in your android application, then this is the right place for you.
-
-Contents [hide]
-
-1 What is Toolbar in Android?
-2 Android Toolbar Example
-2.1 Changing Theme
-2.2 Creating Toolbar Layout
-2.3 Setting Title for the Toolbar
-2.4 Setting up a Menu on the Toolbar
-2.4.1 Creating a Menu
-2.4.2 Adding Menu to Toolbar
-2.4.3 Handling Menu Clicks
-2.5 Setting up a Search on the Toolbar
-2.5.1 Adding a Search Icon
-2.5.2 Adding Search Menu
-2.5.3 Modifying onCreateOptionsMenu()
-2.6 Sharing is Caring:
-2.7 Related
-What is Toolbar in Android?
-The toolbar was introduced from Android Lollipop when Material Design came into existence. Before Toolbar we were using ActionBar, the position of ActionBar was fix at the top of the screen. But in case of Toolbar, it is more flexible; you can place Toolbar anywhere in the Activity.  The toolbar is useful for displaying App Icon, Title, Navigation Menu, etc.
-
-You can see an example of the toolbar in below image.
-
-android toolbar
-Android Toolbar Example
-
-Android Toolbar Example
-To learn to implement Toolbar, we need an Android Project. And for this example, let’s create a new one.
-
-Assuming you also have a new Android Project, here I have a project created using Android Studio 2.3. And you don’t need to add additional libraries if you are using version ahead 2.3.
-
-Changing Theme
-When you create a new project in Android Studio, it has the old Actionbar. And to use Toolbar first, we need to remove the Actionbar, to do this we have to change our theme.
-
-To change the theme go inside res->values->styles.xml. Here you will see the following.</string>
 </resources>

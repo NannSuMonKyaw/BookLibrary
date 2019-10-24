@@ -2,7 +2,12 @@ package com.example.dell.booklibrary.activity;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,45 +20,57 @@ import com.example.dell.booklibrary.fragments.AccountFragment;
 import com.example.dell.booklibrary.model.User;
 import com.example.dell.booklibrary.R;
 public class UpdateProfileActivity extends AppCompatActivity {
-String passedUserName;
-TextView  etuUserName;
+int passedId;
+EditText  etuUserName;
 EditText etEmail,etPhoneNo,etAddress;
 ImageView imvUserProfile;User user,updateUser;
 
 Button btnOk;
-    String strUserName,strEmail="Unknown",strPhno="Unknown",strAddress="Unknown";
+    String strUserName,strEmail="Unknown",strPhno="Unknown",strAddress="Unknown";String photoPath;
+    private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        etuUserName=(TextView)findViewById(R.id.uduserName);
+        etuUserName=(EditText)findViewById(R.id.uduserName);
         etEmail=(EditText)findViewById(R.id.udemail);
         etPhoneNo=(EditText)findViewById(R.id.udphoneNo);
         etAddress=(EditText)findViewById(R.id.udaddress);
         btnOk=(Button)findViewById(R.id.btnudOk);
         imvUserProfile=(ImageView)findViewById(R.id.udUserProfile);
-        passedUserName=getIntent().getExtras().getString("UserName");
+        passedId=getIntent().getExtras().getInt("userId");
         final InitializeDatabase dbHelper = InitializeDatabase.getInstance(this);
-        user=dbHelper.getUserDAO().getUserByName(passedUserName);
+        user=dbHelper.getUserDAO().getUserById(passedId);
 
 
         strEmail=user.getEmail();
         strPhno=user.getPhoneNo();
         strAddress=user.getAddress();
+        photoPath=user.getPhotoPath();
+        strUserName=user.getUserName();
 
-
-        etuUserName.setText(passedUserName);
+        etuUserName.setText(strUserName);
         etEmail.setText(strEmail);
         etPhoneNo.setText(strPhno);
         etAddress.setText(strAddress);
+        imvUserProfile.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+        imvUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //updateUser=new User(etuUserName.getText().toString(),etEmail.getText().toString(),etPhoneNo.getText().toString(),etAddress.getText().toString(),null);
-                dbHelper.getUserDAO().updateUserName(passedUserName,etEmail.getText().toString(),etPhoneNo.getText().toString(),etAddress.getText().toString(),null);
-//                Intent intent=new Intent( v.getContext(),AccountFragment.class);
-//                v.getContext().startActivity(intent);
+
+                dbHelper.getUserDAO().updateUserName(passedId,etuUserName.getText().toString(),etEmail.getText().toString(),etPhoneNo.getText().toString(),etAddress.getText().toString(),photoPath);
+
                 finish();
 
 
@@ -62,4 +79,26 @@ Button btnOk;
         });
 
     }
-}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            photoPath = cursor.getString(columnIndex);
+            cursor.close();
+
+            imvUserProfile.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+
+
+        }
+
+
+    }}

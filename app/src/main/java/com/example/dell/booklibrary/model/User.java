@@ -10,8 +10,19 @@ import androidx.annotation.Nullable;
 public class User {
 
 
-    @NonNull
-    @PrimaryKey
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId( int userId) {
+        this.userId = userId;
+    }
+
+
+    @PrimaryKey(autoGenerate = true)
+    private int userId;
+    @Nullable
     @ColumnInfo(name = "userName")
     private String userName;
 
@@ -22,12 +33,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @Nullable
     @ColumnInfo(name="password")
     private String password;
 
 
 
+
+    @Nullable
     @ColumnInfo(name = "email")
     private String email;
 
@@ -78,7 +91,8 @@ public class User {
     @ColumnInfo(name = "phoneNo")
     private String phoneNo;
 
-    public User( String userName ,String password,@Nullable String email,@Nullable String phoneNo,@Nullable String address,@Nullable String photoPath) {
+    public User( @Nullable String userName ,@Nullable
+            String password,@Nullable String email,@Nullable String phoneNo,@Nullable String address,@Nullable String photoPath) {
 
         this.userName = userName;
         this.password=password;

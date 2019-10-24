@@ -3,6 +3,7 @@ package com.example.dell.booklibrary.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -21,14 +22,14 @@ import com.example.dell.booklibrary.model.Book;
 
 public class BookEditActivity extends AppCompatActivity {
 private EditText etAuthorName,etPrice,etReleaseDate,etCategory,etSummary;
-TextView etBookName;
+EditText etBookName;int passedBookId,userId;
 Button btnSave;ImageView bookPhoto;String passedBookName;Book clickedBook;
 Book book;private static int RESULT_LOAD_IMAGE = 1;  String picturePath="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_edit);
-        etBookName=(TextView) findViewById(R.id.etedbookName);
+        etBookName=(EditText) findViewById(R.id.etedbookName);
         etAuthorName=(EditText)findViewById(R.id.etedauthorName);
         etPrice=(EditText)findViewById(R.id.etedprice);
         etReleaseDate=(EditText)findViewById(R.id.etedreleaseDate);
@@ -38,9 +39,10 @@ Book book;private static int RESULT_LOAD_IMAGE = 1;  String picturePath="";
         bookPhoto=(ImageView)findViewById(R.id.edimbookimage);
 
         passedBookName= getIntent().getExtras().getString("BookName");
+        passedBookId= getIntent().getExtras().getInt("BookID");
         //passedIsRead= getIntent().getExtras().getString("SelectedBookisRead");
         final InitializeDatabase dbHelper = InitializeDatabase.getInstance(this);
-        clickedBook=dbHelper.getBookDAO().getBookByName(passedBookName);
+        clickedBook=dbHelper.getBookDAO().getBookById(passedBookId);
 
         etBookName.setText(clickedBook.getBookName());
         etAuthorName.setText(clickedBook.getAuthorName());
@@ -49,11 +51,13 @@ Book book;private static int RESULT_LOAD_IMAGE = 1;  String picturePath="";
         etCategory.setText(clickedBook.getCategoary());
         etSummary.setText(clickedBook.getSummary());
         picturePath=dbHelper.getBookDAO().getphotoPathbyBookName(passedBookName);
-
+        bookPhoto.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        SharedPreferences sp=getSharedPreferences("login",MODE_PRIVATE);
+        userId=sp.getInt("userId",1);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper.getBookDAO().updateBookByName(etBookName.getText().toString(),etAuthorName.getText().toString(),etPrice.getText().toString(),etReleaseDate.getText().toString(),etCategory.getText().toString(),etSummary.getText().toString(),picturePath);
+                dbHelper.getBookDAO().updateBookById(passedBookId,etBookName.getText().toString(),etAuthorName.getText().toString(),userId,etPrice.getText().toString(),etReleaseDate.getText().toString(),etCategory.getText().toString(),etSummary.getText().toString(),picturePath);
 
                 finish();
             }

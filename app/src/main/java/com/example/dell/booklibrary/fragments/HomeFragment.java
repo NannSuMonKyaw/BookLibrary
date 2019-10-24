@@ -1,6 +1,7 @@
 package com.example.dell.booklibrary.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +22,8 @@ import com.example.dell.booklibrary.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class HomeFragment extends Fragment {
 
@@ -28,7 +31,8 @@ public class HomeFragment extends Fragment {
     private BookAdapter adapter;
     private List<Book> bookList,bookArray;
     FloatingActionButton fab;
-    String bookName,authorName,price,releaseDate,category,summary,photoPath,isRead;
+    int userId;
+    String bookName,authorName,price,releaseDate,category,summary,photoPath;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         fab=(FloatingActionButton)view.findViewById(R.id.fab);
         bookList = new ArrayList<Book>();
+        SharedPreferences sp=getActivity().getSharedPreferences("login",MODE_PRIVATE);
+        userId=sp.getInt("userId",1);
        // prepareBooks();
         adapter = new BookAdapter(getContext(), bookList);
         RecyclerView.LayoutManager mLayoutManager =new GridLayoutManager(getContext(), 2);
@@ -63,17 +69,18 @@ public class HomeFragment extends Fragment {
 
         InitializeDatabase dbHelper = InitializeDatabase.getInstance(getContext());
 
-        bookArray=(ArrayList<Book>)dbHelper.getBookDAO().getAllBook();
+        bookArray=(ArrayList<Book>)dbHelper.getBookDAO().getAllBookbyUserId(userId);
+
 
         for(int i=0;i<bookArray.size();i++) {
             bookName=bookArray.get(i).getBookName();
 
             authorName=bookArray.get(i).getAuthorName();
             photoPath=bookArray.get(i).getPhotoPath();
-          //  isRead=bookArray.get(i).getIsRead();
 
-          //  Book a = new Book(bookName, authorName,price,releaseDate,category,summary,photoPath,isRead);
-            Book a = new Book(bookName, authorName,price,releaseDate,category,summary,photoPath);
+
+
+            Book a = new Book(bookName, authorName,userId,price,releaseDate,category,summary,photoPath);
             bookList.add(a);
 
 
@@ -92,7 +99,7 @@ public class HomeFragment extends Fragment {
         //prepareBooks();
         InitializeDatabase dbHelper = InitializeDatabase.getInstance(getContext());
 
-        bookArray=(ArrayList<Book>)dbHelper.getBookDAO().getAllBook();
+        bookArray=(ArrayList<Book>)dbHelper.getBookDAO().getAllBookbyUserId(userId);
         adapter = new BookAdapter(getContext(), bookArray);
         recyclerView.setAdapter(adapter);
     }

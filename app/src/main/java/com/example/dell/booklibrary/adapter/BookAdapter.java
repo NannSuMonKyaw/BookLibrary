@@ -25,6 +25,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     private Context mContext;
     private List<Book> bookList;
     private String strbookName;
+    private int bookid;
     private String imagePath;
 
 
@@ -33,7 +34,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         public ImageView thumbnail ;
 
         private Book book;
-        private String isRead;
+
         InitializeDatabase dbHelper;
 
         public MyViewHolder(View view) {
@@ -51,12 +52,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
                 public void onClick(View v) {
 
                     strbookName=book.getBookName();
+                    bookid=book.getBookId();
 
                     Toast.makeText(mContext, "Click on " + strbookName, Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent( v.getContext(),DetailActivity.class);
                     intent.putExtra("SelectedBookName",strbookName);
-                    //intent.putExtra("SelectedBookisRead",isRead);
-                    //Toast.makeText(mContext, strbookName, Toast.LENGTH_SHORT).show();
+                    intent.putExtra("SelectedBookId",bookid);
+
                     v.getContext().startActivity(intent);
 
                 }
@@ -70,38 +72,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
             this.book = book;
             bookName.setText(book.getBookName());
             authorName.setText(book.getAuthorName());
-            imagePath=dbHelper.getBookDAO().getphotoPathbyBookName(book.getBookName());
-//            isRead = book.getIsRead();
-////            int imageid=mContext.getResources().getIdentifier(imagePath, "id", mContext.getPackageName());
-//           Log.d("Info","Image Path===="+imagePath);
-//            //thumbnail.setImageResource(R.drawable.album1);
-//            if (isRead.equals("false")) {
-//
-//                checkedImage.setImageResource(R.drawable.unchecked_16);
-//            } else if (isRead.equals("true")) {
-//                checkedImage.setImageResource(R.drawable.checked_16);
-//            }
-//            //Glide.with(mContext)
-            //   .load(new File(imagePath.getPath()))
-            //    .into(thumbnail);
-
+            imagePath=dbHelper.getBookDAO().getphotoPathbyBookId(book.getBookId());
 
             if(imagePath!= null) {
-                // // thumbnail.setImageURI(Uri.parse(imagePath));
+
                 thumbnail.setImageBitmap(BitmapFactory.decodeFile(imagePath));
-                //thumbnail.setImageResource(mContext.getResources().getIdentifier(imagePath, "drawable", mContext.getPackageName()));
+
             }
-            // loading album cover using Glide library
-            // Glide.with(mContext).load((book.getPhotoPath())).into(thumbnail);
+
         }
     }
-    //  public static int getResourseId(Context context, String pVariableName, String pResourcename, String pPackageName) throws RuntimeException {
-    //   try {
-    //      return context.getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
-    //   } catch (Exception e) {
-    //        throw new RuntimeException("Error getting Resource ID.", e);
-    //    }
-    // }
+
 
     public BookAdapter(Context mContext, List<Book> bookList) {
         this.mContext = mContext;

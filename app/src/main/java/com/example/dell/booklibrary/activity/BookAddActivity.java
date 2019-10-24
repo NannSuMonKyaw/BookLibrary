@@ -1,6 +1,7 @@
 package com.example.dell.booklibrary.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -20,7 +21,7 @@ public class BookAddActivity extends AppCompatActivity {
 private EditText etBookName,etAuthorName,etPrice,etReleaseDate,etCategory,etSummary;
 private Button btnSave;ImageView bookPhoto;
 private String strBookName,strAuthorName,strPrice,strReleaseDate,strCategory,strSummary;
-private String picturePath;
+private String picturePath="";private int userId;
     Book book;
     private static int RESULT_LOAD_IMAGE = 1;
     @Override
@@ -35,6 +36,9 @@ private String picturePath;
         etSummary=(EditText)findViewById(R.id.etsummary);
         btnSave=(Button)findViewById(R.id.btnSave);
         bookPhoto=(ImageView)findViewById(R.id.imbookimage);
+
+        SharedPreferences sp=getSharedPreferences("login",MODE_PRIVATE);
+        userId=sp.getInt("userId",1);
 
 
         bookPhoto.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +64,8 @@ private String picturePath;
                 strReleaseDate=etReleaseDate.getText().toString();
                 strCategory=etCategory.getText().toString();
                 strSummary=etSummary.getText().toString();
-                book=new Book(strBookName,strAuthorName,strPrice,strReleaseDate,strCategory,strSummary,picturePath);
+
+                book=new Book(strBookName,strAuthorName,userId,strPrice,strReleaseDate,strCategory,strSummary,picturePath);
                 InitializeDatabase dbHelper = InitializeDatabase.getInstance(v.getContext());
                 dbHelper.getBookDAO().insert(book);
 

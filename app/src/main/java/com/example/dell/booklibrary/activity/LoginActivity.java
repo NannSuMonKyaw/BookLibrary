@@ -2,6 +2,8 @@ package com.example.dell.booklibrary.activity;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText etuserName,etPassword;
     Button btnLogin,btnRegister;
     String userName,password;
-    User user;
+    User user;int userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,17 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister=(Button)findViewById(R.id.lgRegister);
 
         btnLogin=(Button)findViewById(R.id.btnLogin);
+
+        final SharedPreferences sp=getSharedPreferences("login",MODE_PRIVATE);
+        if(sp.contains("userId") ){
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();   //finish current activity
+        }
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Notice!!!Q!!","this is inside register");
-                //Toast.makeText(LoginActivity.this, "this is inside register", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+               Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 finish();
 
@@ -48,13 +56,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userName=etuserName.getText().toString();
                 password=etPassword.getText().toString();
-               // InitializeDatabase.getInstance(LoginActivity.this);
-               // Log.i("usernamebeforeinserting",userName);
+
                 InitializeDatabase dbHelper = InitializeDatabase.getInstance(v.getContext());
             user=dbHelper.getUserDAO().getUser(userName,password);
+
              if((user!=null)){
+                 userId=dbHelper.getUserDAO().getUserId(userName,password);
+
+                 SharedPreferences.Editor e=sp.edit();
+                 e.putInt("userId",userId);
+                 e.commit();
                 Intent intent1=new Intent( LoginActivity.this,MainActivity.class);
-                startActivity(intent1);
+                 Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
+
+                 startActivity(intent1);
                 finish();
 
 
@@ -63,16 +78,9 @@ public class LoginActivity extends AppCompatActivity {
                  Toast.makeText(LoginActivity.this, "UserName & Password Unmatch!! ", Toast.LENGTH_SHORT).show();
              }
 
-               // Intent intent=new Intent( v.getContext(),MainActivity.class);
-              //  v.getContext().startActivity(intent);
-
-
 
             }
         });
-
-           //  finish();
-
 
     }
 }

@@ -16,10 +16,13 @@ public interface UserDAO {
     User getUser();
     @Query("SELECT * FROM User where userName=:userName")
     User getUserByName(String userName);
+    @Query("SELECT * FROM User where userId=:userId")
+    User getUserById(int userId);
 
+    @Query("SELECT userId FROM User where userName=:userName and password=:password")
+    int getUserId(String userName,String password);
     @Query("SELECT * FROM User where userName=:userName and password=:password")
     User getUser(String userName,String password);
-
 
     @Query("SELECT userName FROM User")
     String getUserName();
@@ -46,8 +49,8 @@ public interface UserDAO {
     @Insert
     void insert(User user);
 
-    @Query("Update User set email=:userEmail,phoneNo=:PhoneNo,address=:address,photoPath=:photoPath where userName=:userName")
-    void updateUserName(String userName,String userEmail,String PhoneNo,String address,String photoPath);
+    @Query("Update User set userName=:userName,email=:userEmail,phoneNo=:PhoneNo,address=:address,photoPath=:photoPath where userId=:userId")
+    void updateUserName(int userId,String userName,String userEmail,String PhoneNo,String address,String photoPath);
 
 
 

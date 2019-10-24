@@ -9,7 +9,7 @@ import com.example.dell.booklibrary.DB.InitializeDatabase;
 import com.example.dell.booklibrary.R;
 
 public class IntroSliderActivity extends AppCompatActivity {
-    private Preference_Manager prefManager;
+
     private static int SPLASH_TIME_OUT=3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class IntroSliderActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent homeIntent=new Intent(IntroSliderActivity.this,MainActivity.class);
+                    Intent homeIntent=new Intent(IntroSliderActivity.this,LoginActivity.class);
                     startActivity(homeIntent);
                     finish();
                 }

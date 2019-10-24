@@ -37,20 +37,6 @@ public abstract class InitializeDatabase extends RoomDatabase {
                 InitializeDatabase.class,
                 "my-database")
                 .allowMainThreadQueries()
-
- //               .addCallback(new Callback() {
-//                    @Override
-//                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
-//                        super.onCreate(db);
-//                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                               // getInstance(context).getBookDAO().insertAll(Book.populateData());
-//
-//                            }
-//                        });
-//                    }
-//                })
                 .build();
     }
 }

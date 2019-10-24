@@ -46,7 +46,7 @@
                         android:scaleType="centerCrop"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="@dimen/album_title_padding"
-                        android:background="@drawable/album1" />
+                        android:background="@drawable/plus_240" />
 
 
                     <TextView
@@ -67,7 +67,7 @@
                         android:layout_below="@+id/imbookimage"
                         android:layout_alignTop="@+id/lbbookName"
                         android:layout_toRightOf="@+id/lbbookName"
-                        android:hint="MC"
+                        android:hint="book Name"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 
@@ -91,7 +91,7 @@
                         android:layout_alignTop="@+id/lbauthorName"
                         android:layout_marginLeft="25dp"
                         android:layout_toRightOf="@id/lbauthorName"
-                        android:hint="Local"
+                        android:hint="Author Name"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 
@@ -115,7 +115,7 @@
                         android:layout_alignLeft="@+id/etauthorName"
                         android:layout_alignTop="@+id/lbprice"
                         android:layout_toRightOf="@id/lbprice"
-                        android:hint="3000"
+                        android:hint="eg.3000"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 
@@ -138,7 +138,7 @@
                         android:layout_below="@+id/etprice"
                         android:layout_alignTop="@+id/lbreleaseDate"
                         android:layout_toRightOf="@id/lbreleaseDate"
-                        android:hint="22-10-2019"
+                        android:hint="eg.24-10-2019"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 
@@ -161,9 +161,8 @@
                         android:layout_below="@+id/etreleaseDate"
                         android:layout_alignTop="@+id/lbCategory"
                         android:layout_marginLeft="10dp"
-
                         android:layout_toRightOf="@id/lbCategory"
-                        android:hint="Thriller"
+                        android:hint="eg. Thriller"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 
@@ -184,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lbSummary"
                         android:layout_marginTop="3dp"
-                        android:hint="hello_blank_fragment"
+                        android:hint="Write the summary of the book."
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium" />
 

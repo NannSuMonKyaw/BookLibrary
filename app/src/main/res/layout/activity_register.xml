@@ -42,7 +42,7 @@
                         android:scaleType="centerCrop"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/logo_1squtor"
+                        android:background="@drawable/plus_240"
                         android:layout_marginBottom="10dp" />
 
                     <TextView
@@ -52,16 +52,16 @@
                         android:layout_below="@+id/rgUserProfile"
                         android:layout_marginTop="3dp"
                         android:textColor="@color/colorPrimary"
-                        android:text="*User Name :"
+                        android:text="User Name :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
                         android:id="@+id/rguserName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lbrgUserName"
 
-                        android:hint="Blah Blah"
+                        android:hint="UserName"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium"
@@ -73,12 +73,12 @@
                         android:layout_below="@+id/rguserName"
                         android:layout_marginTop="3dp"
                         android:textColor="@color/colorPrimary"
-                        android:text="*Password :"
+                        android:text="Password :"
                         android:textSize="@dimen/text_size_small"
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
                         android:id="@+id/rgPassword"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lbrgPassword"
                         android:inputType="textPassword"
@@ -98,11 +98,11 @@
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
                         android:id="@+id/rgemail"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lburgEmail"
 
-                        android:hint="blahblah@gmail.com"
+                        android:hint="--@gmail.com"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium"
@@ -118,7 +118,7 @@
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
                         android:id="@+id/rgphoneNo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lbrgPhoneNo"
 
@@ -138,10 +138,10 @@
                         android:padding="@dimen/album_title_padding"/>
                     <EditText
                         android:id="@+id/rgaddress"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lbrgAddress"
-                        android:hint="N0.38,Pyin Oo Lwin"
+                        android:hint="Pyin Oo Lwin"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_medium"

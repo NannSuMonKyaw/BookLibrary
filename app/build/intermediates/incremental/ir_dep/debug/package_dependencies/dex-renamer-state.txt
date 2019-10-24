@@ -1,4 +1,4 @@
-#Thu Oct 24 14:19:48 MMT 2019
+#Fri Oct 25 00:29:13 MMT 2019
 base.0=D\:\\my school data and project\\BookLibrary\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
 path.0=classes.dex
 renamed.0=classes.dex

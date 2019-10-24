@@ -30,10 +30,7 @@ public class AboutFragment extends Fragment {
 
         String userName;
         View v = inflater.inflate(R.layout.fragment_about, container, false);
-        textView=(TextView)v.findViewById(R.id.about_tv);
-        final InitializeDatabase dbHelper = InitializeDatabase.getInstance(getContext());
-        userName=dbHelper.getUserDAO().getUserName();
-        textView.setText(userName);
+
 
         // Inflate the layout for this fragment
         return v;

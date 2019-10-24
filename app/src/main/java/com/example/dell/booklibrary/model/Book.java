@@ -12,14 +12,38 @@ import androidx.annotation.Nullable;
 
 @Entity(tableName = "book")
 public class Book implements Parcelable {
-    @NonNull
-    @PrimaryKey
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId( int bookId) {
+        this.bookId = bookId;
+    }
+
+
+    @PrimaryKey(autoGenerate = true)
+    private int bookId;
+    @Nullable
     @ColumnInfo(name = "bookName")
     private String bookName;
 
-
+    @Nullable
     @ColumnInfo(name = "authorName")
     private String authorName;
+
+    @Nullable
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(@Nullable int userId) {
+        this.userId = userId;
+    }
+
+    @Nullable
+    @ColumnInfo(name="userId")
+    private int userId;
 
     @Nullable
     @ColumnInfo(name = "price")
@@ -50,6 +74,7 @@ public class Book implements Parcelable {
 
         bookName=in.readString();
         authorName=in.readString();
+        userId=in.readInt();
         price=in.readString();
         releaseDate=in.readString();
         categoary=in.readString();
@@ -134,10 +159,11 @@ public class Book implements Parcelable {
 
 
 
-    public Book(String bookName, String authorName, @Nullable String price,@Nullable String releaseDate,@Nullable String categoary,@Nullable String summary,@Nullable String photoPath ) {
+    public Book(@Nullable String bookName,@Nullable String authorName,@Nullable int userId, @Nullable String price,@Nullable String releaseDate,@Nullable String categoary,@Nullable String summary,@Nullable String photoPath ) {
 
         this.bookName = bookName;
         this.authorName = authorName;
+        this.userId=userId;
         this.price = price;
         this.releaseDate = releaseDate;
         this.categoary = categoary;
@@ -146,30 +172,7 @@ public class Book implements Parcelable {
 
 
     }
-//
-//    public static Book[] populateData() {
-//        return new Book[] {
-//
-//
-//               new Book("Martin Luthor King1","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King2","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King3","John","3000","21-10-19","biography","this is blah blah blah","album2","false"),
-//                new Book("Martin Luthor King4","John","3000","21-10-19","biography","this is blah blah blah","album3","true"),
-//                new Book("Martin Luthor King5","John","3000","21-10-19","biography","this is blah blah blah","album4","true"),
-//                new Book("Martin Luthor King6","John","3000","21-10-19","biography","this is blah blah blah","album1","false"),
-//                new Book("Martin Luthor King7","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King8","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King9","John","3000","21-10-19","biography","this is blah blah blah","album6","true"),
-//                new Book("Martin Luthor King10","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King11","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King12","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King13","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King14","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King15","John","3000","21-10-19","biography","this is blah blah blah","album1","true"),
-//                new Book("Martin Luthor King16","John","3000","21-10-19","biography","this is blah blah blah","album1","true")
-//
-//        };
-//    }
+
 
 
     @Override

@@ -59,12 +59,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        //Toast.makeText(RegisterActivity.this, "before onclick "+strUserName+ strPassword, Toast.LENGTH_SHORT).show();
+
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("ADD",strUserName+strPassword);
+
                 InitializeDatabase dbHelper = InitializeDatabase.getInstance(v.getContext());
                 strUserName=etUserName.getText().toString();
                 strPassword=etPassword.getText().toString();
@@ -73,22 +73,15 @@ public class RegisterActivity extends AppCompatActivity {
                 strAddress=etAddress.getText().toString();
 
                 user=new User(strUserName,strPassword,strEmail,strPhno,strAddress,picturePath);
-               // user=new User("nsmk","nsmk","nsmk","nsmk","nsmk","nsmk");
+
                 dbHelper.getUserDAO().insert(user);
-                int count=dbHelper.getUserDAO().getNamecount();
-                String dbuserName=dbHelper.getUserDAO().getUserName();
-                String dbpassword=dbHelper.getUserDAO().getPassword();
-                Toast.makeText(RegisterActivity.this, "in database count is "+count+dbuserName+dbpassword, Toast.LENGTH_SHORT).show();
+
+
                 Intent intent=new Intent( RegisterActivity.this,LoginActivity.class);
                 v.getContext().startActivity(intent);
                 finish();
             }
         });
-
-
-        //finish();
-
-
 
     }
     @Override

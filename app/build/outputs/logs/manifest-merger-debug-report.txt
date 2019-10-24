@@ -83,9 +83,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\DE
 	android:label
 		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:10:9-41
 	android:roundIcon
-		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:11:9-51
+		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:11:9-43
 	android:icon
-		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:9:9-46
+		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:9:9-38
 	android:allowBackup
 		ADDED from D:\my school data and project\BookLibrary\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
